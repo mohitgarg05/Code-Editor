@@ -4,9 +4,12 @@ import "./App.css"
 import Navbar from './Navbar'
 import firebase from './firbaseconfigure'
 import Editor from './Editor'
+import {JamProvider, useJam, use} from 'jam-core-react';
+
 
 function OnlineEditor() {
 
+  const jamConfig = {domain: 'jam.systems'};
   const [html, sethtml] = useState("")
   const [Data, setData] = useState([])
   const [Key, setKey] = useState("")
@@ -96,25 +99,27 @@ function OnlineEditor() {
   return (
     <>
       
-    <div  style={{height:"100%"}}>
+    <div  style={{height:"100%",width:"1507px"}}>
       <div className="row">
-        <Navbar keys = {Key} name={RoomName} />
+        <JamProvider options={{jamConfig}}>
+          <Navbar keys = {Key} name={RoomName} />
+        </JamProvider>
       </div>
-      <div className="row" style={{height:"50%"}}>
-        <div className="col-md-4" style={{border:"solid"}}>
-         <Editor language="xml" 
+      <div className="row" style={{height:"50%",backgroundColor:"#121212"}}>
+        <div className="col-md-3" style={{border:"solid",width:"490px"}}>
+         <Editor  language="xml" 
                 displayname="HTML"
                 value={html}
                 onChange={sethtml}
                 />
         </div>
-        <div className="col-md-4" style={{border:"solid"}}>
+        <div  style={{border:"solid",marginLeft:"20px",width:"490px"}}>
          <Editor language="css" 
                 displayname="CSS"
                 value={css}
                 onChange={setcss}/>
         </div>
-        <div className="col-md-4" style={{border:"solid"}}>
+        <div className="col-md-3" style={{border:"solid",marginLeft:"20px",width:"490px"}}>
          <Editor language="js" 
                 displayname="JS"
                 value={js}
@@ -123,7 +128,7 @@ function OnlineEditor() {
        
       </div>
       <div className="row" style={{height:"50%"}}>
-        <iframe
+        <iframe style={{padding:"0px"}}
           srcDoc={srcDoc}
           title="output"
           sandbox="allow-scripts"

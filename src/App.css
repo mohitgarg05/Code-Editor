@@ -1,7 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
 html,body,#root{
   height: 100%;
+  font-family: 'Roboto Mono', monospace;
+  
   
 }
 body{
+  width: 100%;
+  
+}
+
+.home-page-content{
+  width: 100%;
+  height: 100%;
+  background-color: #121212;
+  font-family: 'Roboto Mono', monospace;
+
+}
+.app-name{
+  padding-top: 20px;
   width: 95em;
+}
+.home-page-content .app-name img{
+  width: 40px;
+ 
+}
+.home-page-content .app-name h3{
+  color: white;
+}
+
+.home-page-content .app-details{
+ 
+  width: 800px;
+  height: 600px;
+  margin: auto ;
+  margin-top: 10px; 
+  background-color: #1d1d1d;
+}
+
+.home-page-content .app-details .discription{
+  color: white;
+  text-align: center;
+  height: 100px;
+
+}
+
+.home-page-content .app-details .discription h2{
+
+  margin-top: 60px;
+
+}
+.home-page-content .app-details .discription  p{
+  margin-top: 30px;
+}
+
+.home-page-content .app-details .room-details h2{ 
+  color: white;
+}
+
+
+.home-page-content .app-details .room-details input{
+  width: 300px;
+  height: 38px;
+  border-radius:5px ;
+  margin-left: 200px;
+  
+
+}
+
+.home-page-content .app-details .room-details button{
+  margin-left: 20px;
+}
+.home-page-content .app-details .room-details  h2{
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.home-page-content .home-history-button{
+  
+  width: 117px;
+  height: 30px;
+  margin-left: 1070px ;
+}
+
+.home-page-content .home-history-button button{
+  width: 50px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+}
+.home-page-content .home-history-button .active{
+  background-color: rgb(13,110,253);
+  color: white;
+  border: none;
+}
+.home-page-content .app-details .history{
+  overflow-x: auto;
+}
+
+.home-page-content .app-details .history h2{
+  color: white;
+  text-align: center;
+  margin-top: 50px;
+  text-transform: capitalize;
+}
+
+.home-page-content .app-details .history table{
+  color:white;
+   margin: auto;
+   margin-top: 50px;
+   width: 600px;
+}
+
+.home-page-content .app-details .history table tr{
+  border: solid ;
+}
+.home-page-content .app-details .history table  td{
+  border: solid;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.home-page-content .app-details .history table th{
+  border: solid;
+  padding: 15px;
+
+  color: white;
+  font-size:20px;
+  text-transform: uppercase;
+}
+
+.collapse button{
+  background-color: rgb(68,72,87);
+  color: white;
+  width: 150px;
 }

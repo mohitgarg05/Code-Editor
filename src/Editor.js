@@ -16,9 +16,9 @@ const Editor = (props) => {
         onChange(value)
     }
     return (
-        <div>
+        <div style={{backgroundColor:"#1d1d1d"}}>
             <div className="row">
-                {displayname}
+               <p style={{color:"white",fontSize:"20px",marginLeft:"10px",marginTop:"5px"}}> {displayname} </p>
             </div>
             <ControlledEditor 
                 onBeforeChange={handlechange}

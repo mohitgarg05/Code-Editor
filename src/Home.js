@@ -1,12 +1,13 @@
 import React,{useState,useEffect} from 'react'
 import firebase from './firbaseconfigure'
-
+import Logo from './Img/Emoji.png'
 const Home = () => {
 
     const [Key, setKey] = useState("")
     const [Enterkey, setEnterkey] = useState("")
     const [RoomName, setRoomName] = useState("")
     const [Arrayy, setArrayy] = useState([])
+    const [HomePage, setHomePage] = useState(true)
     const CreateRoom =()=>{
      
         let Roomref = firebase.database().ref().child('rooms').push();
@@ -71,26 +72,71 @@ const Home = () => {
         localStorage.setItem("RoomName",item.roomname)
         window.location.href='/editor'
     }
-   
+
      
     return (
         <>
-        <div>
-                <input  type="text" value={RoomName} onChange={handlechange2} />
-                <button onClick={CreateRoom}>Create room</button>
-                <input type="text" name="key" value={Enterkey} onChange={handlechange} />
-                <button onClick={EnterRoom}>Enter room Key</button>
-                <h1>Your history</h1>
-                {Arrayy?.map((item)=>(
-                    <div style={{border:"solid"}} onClick={()=>EnterThis(item)}>
-                        <a>{item.roomKey}</a><br></br>
-                        <a>{item.roomname}</a>
+        
+
+                <div className="home-page-content">
+
+                    <div className="row app-name">
+                        <div className="col-md-auto offset-md-1" style={{padding:"0"}}>
+                            <img src={Logo}></img>
+                        </div>
+                        <div className="col-md-3">
+                            <h3>Codersroom</h3>
+                        </div>
                     </div>
-                ))}
+                    <div className="home-history-button" >
+                            <button className={HomePage?"active" : ""} onClick={()=>setHomePage(true)}><i class="fa fa-home" style={{fontSize:"30px"}} ></i></button>
+                            <button className={!HomePage?"active" : ""} onClick={()=>setHomePage(false)}><i class="fa fa-history"  style={{fontSize:"30px"}} ></i></button>
+                    </div>
+                    <div className="row app-details">
+                        {HomePage?<>
+                            <div className=" discription" >
+                      
+                            <h2>Welcome to Codersroom</h2>
+                            <p>Hello, Now there is no need to share your screen and talk on discord to code together .
+                             Here you can code with your friend and have fun on audio channel </p>
+                        </div>
+                        <div className="room-details">
+                            
+                            <input  type="text" value={RoomName} placeholder="Enter Room Name" onChange={handlechange2} />
+                            <button className="btn btn-primary room-creation" onClick={CreateRoom}>Create room</button>
+                            <h2 >OR</h2>
+                            <input type="text" name="key" placeholder="Enter Room Link" value={Enterkey} onChange={handlechange} />
+                            <button onClick={EnterRoom} className="btn btn-primary" >Enter room </button>
+                        </div>
+                        </> : <>
+                            <div className="history">
+                                <h2>Your History</h2>
+                                <table >
+                                    <tr>
+                                        <th>Room Key</th>
+                                        <th>Room Name</th>
+                                    </tr>
+                                    {Arrayy?.map((item)=>(
+                                       
+                                       
+                                        <tr>
+                                     
+                                            <td onClick={()=>EnterThis(item)}>{item.roomKey}</td>
+                                            <td>{item.roomname}</td>
+                                   
+                                        </tr>
+                                      
+                                    ))}
+                                   
+                                </table>
+                            </div>
+                        </> }
+                        
+                    </div>
+
+                </div>
                 
-               
-        </div>
-  
+ 
     </>
     )
 }
